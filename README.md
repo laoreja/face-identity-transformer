@@ -65,6 +65,11 @@ We only use the CASIA-Webface for training. Please set the `dataset` argument to
 CUDA_VISIBLE_DEVICES=0,1,2,3 python3 main_train.py config/main.yaml
 ```
 
+Under the checkpoint directory `args.ckpt_dir`, the checkpoints, log, YAML config will be saved. You could also set up a http server (`python3 -m http.server [PORT]`) to check the intermediate results, `web` for training visualization and `test_web` for validation visualization.
+
+During training, a visdom server will be automatically set up and you can check the training visualization and loss curves there. (The default visdom port is 8097.)
+
+
 ## Inference
 
 ### Qualitative results on test images
@@ -78,6 +83,9 @@ The code would try to find the checkpoint with name `checkpoint_xxxx.pth.tar` fr
 You could add option `--inference_full` to do inference on the full test set, otherwise it would save visuliazations for one randomly sampled batch of test images.
 
 The code would automatically set the batch size (`batch_size_per_gpu_during_training x num_gpus_during_inference`) according to the number of GPUs you use during inference from the `CUDA_VISIBLE_DEVICES` environment variable.
+
+The qualitative results will be saved under the directory `qualitative_results`.
+
 
 ### Multimodality: Same input face with different passwords
 Given different passwords, our approach achieves multimodality on the same input face, like the following illustration.
