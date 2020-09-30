@@ -1,13 +1,28 @@
 # Password-conditioned Face Identity Transformer
+![teaser](assets/teaser.png)
 
 This is the PyTorch implementation of our paper [**Password-conditioned Anonymization and Deanonymization with Face Identity Transformers**](https://arxiv.org/abs/1911.11759) in ECCV 2020.
+
+**Abstract.** Cameras are prevalent in our daily lives, and enable many
+useful systems built upon computer vision technologies such as smart
+cameras and home robots for service applications. However, there is
+also an increasing societal concern as the captured images/videos may
+contain privacy-sensitive information (e.g., face identity). We propose a
+novel face identity transformer which enables automated photo-realistic
+password-based anonymization and deanonymization of human faces appearing in visual data. Our face identity transformer is trained to (1)
+remove face identity information after anonymization, (2) recover the
+original face when given the correct password, and (3) return a wrong—
+but photo-realistic—face given a wrong password. With our carefully
+designed password scheme and multi-task learning objective, we achieve
+both anonymization and deanonymization using the same single network. Extensive experiments show that our method enables multimodal
+password conditioned anonymizations and deanonymizations, without
+sacrificing privacy compared to existing anonymization methods.
 
 * [Paper (Arxiv)](https://arxiv.org/abs/1911.11759).
 * [60-seconds presentation](https://youtu.be/9nn3lvr6IsU).
 * [10-minutes presentation](https://youtu.be/hANVFxC9Szo).
 
-
-![teaser](assets/teaser.png)
+![Network Architecture](assets/architecture.png)
 
 ## Demo
 Here is a demo of our method applied on video in the wild:
