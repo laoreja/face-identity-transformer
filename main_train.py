@@ -234,15 +234,23 @@ def main():
 
     # -------------------- optimizers --------------------
     # considering separate optimizer for each network?
-    optimizer_G_params = [{'params': model_dict['G'].parameters(), 'lr': args.lr},
-                          {'params': model_dict['Q'].parameters(), 'lr': args.lr}]
+    if not hasattr(args, 'G_lr'):
+        args.G_lr = args.lr
+    if not hasattr(args, 'Q_lr'):
+        args.Q_lr = args.lr
+    if not hasattr(args, 'D_lr'):
+        args.D_lr = args.lr
+    if not hasattr(args, 'FR_lr'):
+        args.FR_lr = args.lr * 0.1
+
+    optimizer_G_params = [{'params': model_dict['G'].parameters(), 'lr': args.G_lr},
+                          {'params': model_dict['Q'].parameters(), 'lr': args.Q_lr}]
     optimizer_G = torch.optim.Adam(optimizer_G_params,
-                                   lr=args.lr,
                                    betas=(args.beta1, 0.999),
                                    weight_decay=args.weight_decay)
 
-    optimizer_D_params = [{'params': model_dict['D'].parameters(), 'lr': args.lr},
-                          {'params': netFR.parameters(), 'lr': args.lr * 0.1}]
+    optimizer_D_params = [{'params': model_dict['D'].parameters(), 'lr': args.D_lr},
+                          {'params': netFR.parameters(), 'lr': args.FR_lr}]
     optimizer_D = torch.optim.Adam(optimizer_D_params,
                                    betas=(args.beta1, 0.999),
                                    weight_decay=args.weight_decay)

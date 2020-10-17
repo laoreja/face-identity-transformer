@@ -58,6 +58,9 @@ def generate_code(passwd_length, batch_size, device, inv, use_minus_one, gen_ran
         elif use_minus_one == 'half':
             z -= 0.5
             rand_z -= 0.5
+        elif use_minus_one == 'one_fourth':
+            z = (z - 0.5) / 2
+            rand_z = (z - 0.5) / 2
         return z, dis_target, rand_z, rand_dis_target
     else:
         inv_unsigned_long = 2 ** passwd_length - 1 - unsigned_long
@@ -102,6 +105,14 @@ def generate_code(passwd_length, batch_size, device, inv, use_minus_one, gen_ran
             rand_inv_z -= 0.5
             if gen_random_WR:
                 rand_inv_2nd_z -= 0.5
+
+        elif use_minus_one == 'one_fourth':
+            z = (z - 0.5) / 2 # 0 -> -0.25, 1-> 0.25
+            rand_z = (rand_z - 0.5) / 2
+            inv_z = (inv_z - 0.5) / 2
+            rand_inv_z = (rand_inv_z - 0.5) / 2
+            if gen_random_WR:
+                rand_inv_2nd_z = (rand_inv_2nd_z - 0.5) / 2
 
         if gen_random_WR:
             return z, dis_target, rand_z, rand_dis_target, \

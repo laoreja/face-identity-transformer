@@ -1,4 +1,4 @@
-ckpt_dir: checkpoints/reimplement/
+ckpt_dir: checkpoints/main/
 
 passwd_length: 16
 
