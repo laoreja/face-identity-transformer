@@ -57,7 +57,7 @@ In our paper, we use the following three face datasets:
 * [LFW](http://vis-www.cs.umass.edu/lfw/) dataset: Download and extract from this [link](http://vis-www.cs.umass..edu/lfw/lfw.tgz).
 * [FFHQ](https://github.com/NVlabs/ffhq-dataset) dataset: We use the validation set of thumbnail version, since it matches the image size we use (128x128).
 
-We use [MTCNN](https://ieeexplore.ieee.org/abstract/document/7553523) to obtain the face bounding boxes and landmarks and you can download our extracted face bounding boxes and landmarks from this [Google Drive folder](https://drive.google.com/drive/folders/1VHthSoPHC6m9imQzODU4m5k1mYB_D0fk?usp=sharing). (The landmarks are only needed during training. Bounding boxes are needed for training and for images/video in the wild to crop out the face region).
+We use [MTCNN](https://ieeexplore.ieee.org/abstract/document/7553523) to obtain the face bounding boxes and landmarks and you can download our extracted face bounding boxes and landmarks from this [Google Drive folder](https://drive.google.com/drive/folders/1wipjVTDY_RU9dh2BXx4vc7hWiWhv6ZvL?usp=sharing). (The landmarks are only needed during training. Bounding boxes are needed for training and for images/video in the wild to crop out the face region). Please *unzip* the zipped txt file.
 
 We store and organize all face datasets in the same directory `data_root`, and use an argument `data_root` in our code to fetch the datasets. Please download the datasets and set the `data_root` argument either in the command line or in the YAML config.
 
@@ -118,9 +118,9 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python3 main_test_diff_passwds.py CONFIG_PATH --res
 The results will be saved under the same parent directory as the `CHECKPOINT_PATH`. Assume `CHECKPOINT_FOLDER_NAME` is the folder name for the resumed checkpoint, then a new folder named `test_CHECKPOINT_FOLDER_NAME` will be created and results will be saved there, under the `test_web` subfoler. You could view the results through a http server. Each column in the `index_latest.html` represnets a different password (please ignore the column title there. Since we use a 16-bit password, sometimes the identity difference is subtle.)
 
 ## Trained model
-You can download our trained model from this [Google drive folder](https://drive.google.com/drive/folders/1s1L0W9fjCVUyRCScYmLMc5Oy7hsTe7Sh?usp=sharing). It also comes with the YAML config so that you could try `save_visual.py` with this folder.
+You can download our trained model from this [Google drive folder](https://drive.google.com/drive/folders/1b8vSWgWYJPUmcrMr2ROLhQVRD0RMcftx?usp=sharing). It also comes with the YAML config so that you could try `save_visual.py` with this folder.
 
-We noticed some blob-like artifacts in generated images when the background is white. We found that decresing the learning rate for the discriminator and reduce the magnitude for each element of the passwords would help. We provide its YAML config file in `config/one_fourth_D_lr_half.yaml` and a pretrained model in this [Google drive folder](https://drive.google.com/drive/folders/1f0FJZhbXCYuORZhicAr__tjr2HenXTlf?usp=sharing)
+We noticed some blob-like artifacts in generated images when the background is white. We found that decresing the learning rate for the discriminator and reduce the magnitude for each element of the passwords would help. We provide its YAML config file in `config/one_fourth_D_lr_half.yaml` and a pretrained model in this [Google drive folder](https://drive.google.com/drive/folders/1NVn5kKzeOavLCSHbPYkp2UBitGRuFoRH?usp=sharing)
 
 ## Example Results
 ### On CASIA dataset
